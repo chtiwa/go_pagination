@@ -1,0 +1,85 @@
+{{define "pagination"}}
+<div class="pagination">
+  <ul>
+    <li>
+      {{if (gt .pagination.CurrentPage 1) }}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.PreviousPage}}"
+        >Previous</a
+      >
+      {{else}}
+      <span>Previous</span>
+      {{end}}
+    </li>
+
+    <li>
+      {{if (gt .pagination.CurrentPage 3)}}
+      <a href="{{.paginatin.BaseURL}}/page/1"> 1 </a>
+      {{end}}
+    </li>
+
+    <li>
+      {{if (gt .pagination.CurrentPage 5)}}
+      <span>...</span>
+      {{end}}
+    </li>
+
+    <li>
+      {{if (gt .pagination.CurrentPage 2)}}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.TwoBelow}}">
+        {{.pagination.TwoBelow}}
+      </a>
+      {{end}}
+    </li>
+
+    <li>
+      {{if (gt .pagination.CurrentPage 1)}}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.PreviousPage}}">
+        {{.pagination.PreviousPage}}
+      </a>
+      {{end}}
+    </li>
+
+    <li>
+      <span> {{.pagination.CurrentPage}} </span>
+    </li>
+
+    <li>
+      {{ if (lt .pagination.CurrentPage .pagination.TotalPages)}}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.NextPage}}">
+        {{.pagination.NextPage}}
+      </a>
+      {{end}}
+    </li>
+
+    <li>
+      {{ if (le .pagination.TwoAfter .pagination.TotalPages)}}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.TwoAfter}}">
+        {{.pagination.TwoAfter}}
+      </a>
+      {{end}}
+    </li>
+
+    <li>
+      {{ if (lt .pagination.ThreeAfter .pagination.TotalPages)}}
+      <span>...</span>
+      {{end}}
+    </li>
+
+    <li>
+      {{ if (lt .pagination.TwoAfter .pagination.TotalPages)}}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.TotalPages}}">
+        {{.pagination.TotalPages}}
+      </a>
+      {{end}}
+    </li>
+
+    <li>
+      {{ if (lt .pagination.CurrentPage .pagination.TotalPages) }}
+      <a href="{{.paginatin.BaseURL}}/page/{{.pagination.NextPage}}">Next</a>
+      {{else}}
+      <span>Next</span>
+      {{end}}
+    </li>
+  </ul>
+</div>
+{{end}}
